@@ -1,8 +1,5 @@
 PREFIX=../..
 
-INCDIR = $(PREFIX)/include
-BINDIR = $(PREFIX)/bin
-
 #le compilateur
 CC= g++
 
@@ -29,7 +26,7 @@ OUTFILE= test
 
 #les fichiers objets a generer 
 #OBJS= $(LIBOBJS) 
-OBJS= Graph.o Random_graph.o Algorithmes.o
+OBJS= Graph.o Random_graph.o Algorithmes.o test.o
 
 #les dependances 
 all: $(OUTFILE)
@@ -48,15 +45,8 @@ test.o: test.cpp
         # regle implicite utilisee par make pour la compilation 
         # $(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
-install:  $(OUTFILE)
-	./$(OUTFILE)
-	test -d $(INCDIR) || mkdir $(INCDIR)
-	cp $(INSTHEADERS) $(INCDIR)
-	ar -rs $(LIBOBJS) 
-
 clean :
 	rm -f  $(OUTFILE) $(OBJS)
 
-mrproper: clean 
-	cd $(INCDIR); rm - f $(INSTHEADERS)
+mrproper: clean
 	rm -f *~
