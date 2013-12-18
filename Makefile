@@ -22,24 +22,35 @@ INSTHEADERS= .h
 LIBOBJS= .o
 
 #Le nom du fichier executable servant a valider le module
-OUTFILE= test
+OUTFILE= main
 
 #les fichiers objets a generer 
 #OBJS= $(LIBOBJS) 
-OBJS= Graph.o Random_graph.o Algorithmes.o test.o
+OBJS= Graph.o Random_graph.o Glouton.o TwoAppr_neighbourhood.o main.o
 
 #les dependances 
 all: $(OUTFILE)
 
-test: $(OBJS) test.o
+main: $(OBJS) main.o
 
 #$(OUTFILE): $(OBJS) 
         # regle implicite utilisee par make pour l'edition de liens
         # $(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
 
 #les dependances des fichiers objets
+Glouton.o: source/Glouton.cpp 
+		gcc -o Glouton.o -c source/Glouton.cpp  -W -Wall -ansi -pedantic
 
-test.o: test.cpp
+TwoAppr_neighbourhood.o: source/Glouton.cpp source/TwoAppr_neighbourhood.cpp
+		gcc -o TwoAppr_neighbourhood.o -c  source/TwoAppr_neighbourhood.cpp -W -Wall -ansi -pedantic
+
+
+
+Random_graph.o: source/Random_graph.cpp
+		gcc -o Random_graph.o -c source/Random_graph.cpp -W -Wall -ansi -pedantic
+Graph.o: source/Graph.cpp 
+		gcc -o Graph.o -c source/Graph.cpp -W -Wall -ansi -pedantic
+main.o: main.cpp
 
 .o: .cpp .h
         # regle implicite utilisee par make pour la compilation 

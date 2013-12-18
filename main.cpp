@@ -50,8 +50,8 @@ int main()
     vector<int> cover2 = twoAppr_neighbourhood(g);
     displayVector(cover2);
 
-    vector<int> cover3 = twoAppr_deepSearch(g1);
-    displayVector(cover3);
+  //  vector<int> cover3 = twoAppr_deepSearch(g1);
+    //displayVector(cover3);
 
     return 0;
 }
