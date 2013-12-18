@@ -8,7 +8,7 @@ using namespace std;
 
 class Graph
 {
-    private:
+    protected:
         vector<vector<int> > g_vertex;
     public:
         Graph();
@@ -24,7 +24,13 @@ class Graph
         virtual void delEdge(int vertex1, int vertex2);
 
         bool haveEdge(int vertex1, int vertex2);
+        bool haveNoEdge();
+
+        vector<int> getNeighbours(int vertex) const;
+
         string toString();
+
+        Graph *copy() const;
 };
 
 #endif // GRAPH_H
