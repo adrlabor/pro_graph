@@ -8,7 +8,7 @@ Graph::Graph()
 }
 
 Graph::Graph(vector<vector<int> > vertex_list) {
-        g_vertex = vertex_list;
+    g_vertex = vertex_list;
 }
 
 Graph::~Graph()
@@ -23,7 +23,6 @@ int Graph::getNbVertex() const{
 
 int Graph::addVertex(){
     g_vertex.push_back(vector<int>());
-    // on renvoit l'addresse du nouveau vertex
     return g_vertex.size() - 1;
 }
 
@@ -71,6 +70,30 @@ void Graph::delEdge(int vertex1, int vertex2) {
   }
 }
 
+bool Graph::haveEdge(int vertex1, int vertex2) {
+    for (int i = 0; i < (signed)g_vertex[vertex1].size(); i++){
+        if (g_vertex[vertex1][i] == vertex2){
+            return true;
+        }
+    }
+    return false;
+}
+bool Graph::haveNoEdge(){
+    for (int i = 0 ; i < getNbVertex(); i++){
+        if (getNbEdge(i) > 0)
+            return false;
+    }
+    return true;
+}
+
+vector<int> Graph::getNeighbours(int vertex) const{
+    vector<int> copy;
+    for (int i = 0; i < (signed)g_vertex[vertex].size(); i++) {
+            copy.push_back(g_vertex[vertex][i]);
+    }
+    return copy;
+}
+
 string Graph::toString(){
     std::ostringstream s;
     for (unsigned int i = 0; i < g_vertex.size(); i++) {
@@ -81,4 +104,22 @@ string Graph::toString(){
             s << "\n";
     }
     return s.str();
+}
+
+Graph *Graph::copy() const {
+        Graph *copy = new Graph();
+
+        //Ajout de tous les sommets
+        for (int i = 0; i < (signed)g_vertex.size(); i++) {
+                copy->addVertex();
+        }
+        //Ajout des arrêtes
+        for (int i = 0; i < (signed)g_vertex.size(); i++) {
+            for (int j = 0; j < (signed)g_vertex[i].size(); j++) {
+                if (!copy->haveEdge(i, g_vertex[i][j])) {
+                    copy->addEdge(i, g_vertex[i][j]);
+                }
+            }
+        }
+        return copy;
 }
