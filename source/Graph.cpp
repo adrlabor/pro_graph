@@ -47,7 +47,10 @@ int Graph::getNbEdge(int vertex) const {
 void Graph::addEdge(int vertex, int vertex2) {
     g_vertex[vertex].push_back(vertex2);
     g_vertex[vertex2].push_back(vertex);
+}
 
+void Graph::addOnlyOneEdge(int vertex, int vertex2){
+    g_vertex[vertex].push_back(vertex2);
 }
 
 void Graph::delEdge(int vertex1, int vertex2) {
@@ -78,6 +81,7 @@ bool Graph::haveEdge(int vertex1, int vertex2) {
     }
     return false;
 }
+
 bool Graph::haveNoEdge(){
     for (int i = 0 ; i < getNbVertex(); i++){
         if (getNbEdge(i) > 0)
