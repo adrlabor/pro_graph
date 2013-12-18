@@ -20,8 +20,9 @@ class Graph
         void delVertex(int vertex);
 
         int getNbEdge(int vertex) const;
-        virtual void addEdge(int vertex, int vertex2);
-        virtual void delEdge(int vertex1, int vertex2);
+        void addEdge(int vertex, int vertex2);
+        void addOnlyOneEdge(int vertex, int vertex2);
+        void delEdge(int vertex1, int vertex2);
 
         bool haveEdge(int vertex1, int vertex2);
         bool haveNoEdge();
