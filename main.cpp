@@ -51,9 +51,8 @@ cout<<endl;
     cout<<endl;
     Graph* g3 = new RandomBinaryTree(10);
     cout << "Arbre aléatoire binaire:\n" << g3->toString() << endl;
-    
     vector<int> cover4 = OptimalTreeVertexCover(g3);
-    
+    cout << ">Arbre optimal :";displayVector(cover4);
 
     cout<<endl;
     cout<<endl;
