@@ -127,3 +127,14 @@ Graph *Graph::copy() const {
         }
         return copy;
 }
+
+bool Graph::isNeighbour(int vertex,int vertex2){
+    vector<int> neighours  = this->getNeighbours(vertex);
+    for(int unsigned i=0;i<neighours.size();i++)
+    {
+        if (vertex2 ==neighours[i]){
+                return true;
+        }
+    }
+    return false;
+}

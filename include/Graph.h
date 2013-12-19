@@ -28,6 +28,7 @@ class Graph
         bool haveNoEdge();
 
         vector<int> getNeighbours(int vertex) const;
+	bool isNeighbour(int vertex,int vertex2);
 
         string toString();
 

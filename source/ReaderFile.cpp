@@ -66,7 +66,7 @@ Graph* ReaderFile::fileToGraph(char* file){
            if (buffer[i] >= '0' && buffer[i] <= '9'){
               int newVertex = buffer[i]-'0';
 
-            if(!isNeighbour(rootVertex,newVertex-1,g)){
+            if(!g->isNeighbour(rootVertex,newVertex-1)){
                 g->addEdge(rootVertex,newVertex-1);
             }
 
@@ -80,15 +80,5 @@ Graph* ReaderFile::fileToGraph(char* file){
 }
 
 
-bool ReaderFile::isNeighbour(int vertex,int vertex2,Graph* g){
-    vector<int> neighours  = g->getNeighbours(vertex);
-    for(int unsigned i=0;i<neighours.size();i++)
-    {
-        if (vertex2 ==neighours[i]){
-                return true;
-        }
-    }
-    return false;
-}
 
 

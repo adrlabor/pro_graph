@@ -5,7 +5,7 @@ class ReaderFile {
 	ReaderFile();
 	~ReaderFile();
 	Graph* fileToGraph(char* file);
-	bool isNeighbour(int sommet,int sommet2,Graph* g);
+
 
 
 };
