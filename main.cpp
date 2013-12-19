@@ -38,20 +38,33 @@ cout<<endl;
     vector<int> cover3 = twoAppr_depthSearch(g);
     cout<<">2approché parcours profondeur :";displayVector(cover3);
 
-cout <<endl;
-cout <<endl;
-
-
+    cout <<endl;
+    cout <<endl;
     Graph* g2 = new Random_bipartis(10, 1);
     cout << "Graph bipartis :\n" << g2->toString() << endl;
 
-cout<<endl;
-cout<<endl;
-    Graph* g3 = new RandomTree(10);
-    cout << "Arbre aléatoire:\n" << g3->toString() << endl;
+
+
+
+    cout<<endl;
+    cout<<endl;
+    Graph* g3 = new RandomTree(10,0,3);
+    cout << "Arbre aléatoire binaire:\n" << g3->toString() << endl;
     
-	vector<int> cover4 = OptimalTreeVertexCover(g3);
+    vector<int> cover4 = OptimalTreeVertexCover(g3);
     cout << ">Arbre optimal :";displayVector(cover4);
+
+
+cout<<endl;
+    cout<<endl;
+    Graph* g4 = new RandomTree(10,0,5);
+    cout << "Arbre aléatoire:\n" << g4->toString() << endl;
+    
+    vector<int> cover5 = OptimalTreeVertexCover(g4);
+    cout << ">Arbre optimal :";displayVector(cover5);
+
+
+
 
     return 0;
 

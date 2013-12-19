@@ -5,10 +5,11 @@
 
 class RandomTree : public Graph {
 public:
-        RandomTree(int nbVertex);
+        RandomTree(int nbVertex,int min,int max);
 
 private:
-        void generateRandomTree(int nbVertex);
+        void generateRandomTree(int nbVertex,int min,int max);
+	
 };
 
 #endif /* TREE_H_ */
