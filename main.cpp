@@ -6,6 +6,7 @@
 #include "include/Random_Tree.h"
 #include "include/Random_Binary_Tree.h"
 #include "include/Algorithmes.h"
+#include "include/ReaderFile.h"
 #include <vector>
 
 using namespace std;
@@ -63,8 +64,12 @@ cout<<endl;
     cout << ">Arbre optimal :";displayVector(cover5);
 
 
-
-
+	ReaderFile* reader = new ReaderFile();
+	Graph *grapheFile = new Graph();
+	grapheFile = reader->fileToGraph("source/fileTest.txt");
+	
+	cout << "Graph normal :\n" << grapheFile->toString() << endl;
+	
     return 0;
 
 }

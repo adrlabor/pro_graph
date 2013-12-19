@@ -28,7 +28,7 @@ OUTFILE= main
 
 #les fichiers objets a generer 
 #OBJS= $(LIBOBJS) 
-OBJS= Graph.o Random_graph.o Random_Tree.o Random_Binary_Tree.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o OptimalTree.o main.o
+OBJS= Graph.o Random_graph.o Random_Tree.o Random_Binary_Tree.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o OptimalTree.o ReaderFile.o main.o
 
 #les dependances 
 all: $(OUTFILE)
@@ -61,6 +61,8 @@ Random_Binary_Tree.o:$(DIRSOURCE)Random_Binary_Tree.cpp
 OptimalTree.o: $(DIRSOURCE)OptimalTree.cpp
 		gcc -o OptimalTree.o -c  $(DIRSOURCE)OptimalTree.cpp -W -Wall -ansi -pedantic
 
+ReaderFile.o: $(DIRSOURCE)ReaderFile.cpp 
+		gcc -o ReaderFile.o -c $(DIRSOURCE)ReaderFile.cpp  -W -Wall -ansi -pedantic
 
 Random_graph.o: source/Random_graph.cpp
 		gcc -o Random_graph.o -c $(DIRSOURCE)Random_graph.cpp -W -Wall -ansi -pedantic
