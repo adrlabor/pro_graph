@@ -28,7 +28,7 @@ OUTFILE= main
 
 #les fichiers objets a generer 
 #OBJS= $(LIBOBJS) 
-OBJS= Graph.o Random_graph.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o main.o
+OBJS= Graph.o Random_graph.o Random_Tree.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o OptimalTree.o main.o
 
 #les dependances 
 all: $(OUTFILE)
@@ -52,6 +52,11 @@ TwoAppr_depthSearch.o: $(DIRSOURCE)TwoAppr_depthSearch.cpp
 Random_bipartis.o: $(DIRSOURCE)Random_bipartis.cpp
 		gcc -o Random_bipartis.o -c  $(DIRSOURCE)Random_bipartis.cpp -W -Wall -ansi -pedantic
 
+Random_Tree.o: $(DIRSOURCE)Random_Tree.cpp
+		gcc -o Random_Tree.o -c  $(DIRSOURCE)Random_Tree.cpp -W -Wall -ansi -pedantic
+
+OptimalTree.o: $(DIRSOURCE)OptimalTree.cpp
+		gcc -o OptimalTree.o -c  $(DIRSOURCE)OptimalTree.cpp -W -Wall -ansi -pedantic
 
 
 Random_graph.o: source/Random_graph.cpp
@@ -68,4 +73,4 @@ clean :
 	rm -f  $(OUTFILE) $(OBJS)
 
 mrproper: clean
-	rm -f *~
+	rm -f *~ /source/*~ /include/*~ /source/*#
