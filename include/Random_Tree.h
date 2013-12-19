@@ -6,7 +6,6 @@
 class RandomTree : public Graph {
 public:
         RandomTree(int nbVertex,int min,int max);
-
 private:
         void generateRandomTree(int nbVertex,int min,int max);
 	

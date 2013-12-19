@@ -4,6 +4,7 @@
 #include "include/Random_graph.h"
 #include "include/Random_bipartis.h"
 #include "include/Random_Tree.h"
+#include "include/Random_Binary_Tree.h"
 #include "include/Algorithmes.h"
 #include <vector>
 
@@ -48,16 +49,15 @@ cout<<endl;
 
     cout<<endl;
     cout<<endl;
-    Graph* g3 = new RandomTree(10,0,3);
+    Graph* g3 = new RandomBinaryTree(10);
     cout << "Arbre aléatoire binaire:\n" << g3->toString() << endl;
     
     vector<int> cover4 = OptimalTreeVertexCover(g3);
-    cout << ">Arbre optimal :";displayVector(cover4);
+    
 
-
-cout<<endl;
     cout<<endl;
-    Graph* g4 = new RandomTree(10,0,5);
+    cout<<endl;
+    Graph* g4 = new RandomTree(10,1,5);
     cout << "Arbre aléatoire:\n" << g4->toString() << endl;
     
     vector<int> cover5 = OptimalTreeVertexCover(g4);

@@ -1,18 +1,24 @@
-#include "../include/Random_Tree.h"
+#include "../include/Random_Binary_Tree.h"
 #include <time.h>
 #include <cstdlib>
 #include <cmath>
 
-RandomTree::RandomTree(int nbVertex,int min,int max) : Graph()
+const int nbMinChild = 0;
+const int nbMaxChild = 3;
+
+
+
+
+RandomBinaryTree::RandomBinaryTree(int nbVertex) : Graph()
 {
-        generateRandomTree(nbVertex,min,max);
+        generateRandomBinaryTree(nbVertex,nbMinChild,nbMaxChild);
 	
 }
 
 
 
 void
-RandomTree::generateRandomTree(int nbVertex,int nbMinChild,int nbMaxChild) {
+RandomBinaryTree::generateRandomBinaryTree(int nbVertex,int nbMinChild,int nbMaxChild) {
         srand(time(NULL));
 	if (nbVertex < 1)
                 return;
@@ -39,6 +45,4 @@ RandomTree::generateRandomTree(int nbVertex,int nbMinChild,int nbMaxChild) {
 			cursor++;
 		}
 	}
-
 }
-
