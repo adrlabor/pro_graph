@@ -73,6 +73,8 @@ cout<<endl;
 
 	   Minisat minsat = Minisat();
             minsat.VertexCoverToSat(grapheFile);
+     minsat.SatToVertexCover();
+
 	
     return 0;
 
