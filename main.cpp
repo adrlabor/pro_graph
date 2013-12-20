@@ -5,6 +5,7 @@
 #include "include/Random_bipartis.h"
 #include "include/Random_Tree.h"
 #include "include/Random_Binary_Tree.h"
+#include "include/Random_minCoverGraph.h"
 #include "include/Algorithmes.h"
 #include "include/ReaderFile.h"
 #include "include/Minisat.h"
@@ -63,6 +64,12 @@ int main()
     vector<int> cover51 = GetTreeOptimalVertexCover(g4);
     cout << ">Arbre optimal :";displayVector(cover51);
 
+    Graph *g7 = new Random_minCoverGraph(3,2,0.8);
+    cout << "Graphe minCover :\n" << g7->toString() << endl;
+
+    vector<int> cover_para = opti_para_minCoverGraph(g7, 3);
+    cout << "Algo para:" << endl;
+    displayVector(cover_para);
 
 
     cout<<endl;
