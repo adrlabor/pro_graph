@@ -26,7 +26,7 @@ Graph* ReaderFile::fileToGraph(char* file){
 
    	while (std::getline(myfile, line))
 	{
-        cout<<line<<endl;
+       
         ++number_of_lines;
 	}
 
@@ -41,14 +41,14 @@ Graph* ReaderFile::fileToGraph(char* file){
 	//Création Arrêtes
 
 
-    cout<<"début"<<endl;
+    
     std::string line2;
     std::ifstream myfile2(file);
     int rootVertex = 0;
     while (std::getline(myfile2, line2))
     {
 
-        cout<<line2<<endl;
+       
        //string to char*
        char *buffer=new char[line2.size()+1];
        buffer[line2.size()]=0;

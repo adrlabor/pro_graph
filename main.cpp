@@ -5,6 +5,7 @@
 #include "include/Random_bipartis.h"
 #include "include/Random_Tree.h"
 #include "include/Random_Binary_Tree.h"
+#include "include/Random_minCoverGraph.h"
 #include "include/Algorithmes.h"
 #include "include/ReaderFile.h"
 #include "include/Minisat.h"
@@ -23,13 +24,37 @@ void displayVector(vector<int> v) {
 
 int main()
 {
-    Graph* g = new Random_graph(5, 0.5);
-    Graph* g1 = new Graph();
-    g1->addVertex();g1->addVertex();g1->addVertex();g1->addVertex();g1->addVertex();
-    g1->addEdge(0,1);g1->addEdge(0,2);g1->addEdge(1,2);g1->addEdge(2,3);g1->addEdge(3,4);
+   
+    cout<<endl;
+    cout<<endl;
+    Graph* g4 = new RandomTree(10,1,5);
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "///////////////////////////////Arbre aléatoire//////////////////////////////////" <<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
+    cout<< g4->toString() << endl<<endl;
+    cout<<"Algorithme de recherche de couverture:\n"<<endl;
+    vector<int> cover51 = GetTreeOptimalVertexCover(g4);
+    cout << "> Arbre optimal :";
+    displayVector(cover51);
+
 
     cout<<endl;
     cout<<endl;
+    Graph* g3 = new RandomBinaryTree(10);
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "//////////////////////////////Arbre aléatoire binaire///////////////////////////" <<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
+    cout<<  g3->toString() << endl<<endl;
+    cout<<"Algorithme de recherche de couverture:\n"<<endl;
+    vector<int> cover41 = GetTreeOptimalVertexCover(g3);
+    cout << "> Arbre optimal :";
+    displayVector(cover41);
+
+
+
+    cout<<endl;
+    cout<<endl;
+    Graph* g = new Random_graph(5, 0.5);
     cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
     cout<< "///////////////////////////////Graph classique//////////////////////////////////"<<endl; 
     cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
@@ -40,10 +65,12 @@ int main()
     cout<<"> Glouton : ";displayVector(cover);
 
     vector<int> cover2 = twoAppr_neighbourhood(g);
-    cout<<"> 2-approché avec élimination du voisin : ";displayVector(cover2);
+    cout<<"> 2-approché avec élimination du voisin : ";
+    displayVector(cover2);
 
     vector<int> cover3 = twoAppr_depthSearch(g);
-    cout<<"> 2-approché avec parcours en profondeur : ";displayVector(cover3);
+    cout<<"> 2-approché avec parcours en profondeur : ";
+    displayVector(cover3);
 
     cout<<endl;
     cout<<endl;
@@ -54,26 +81,19 @@ int main()
     cout<< g2->toString() << endl<<endl;
 
 
-    
+  
     cout<<endl;
     cout<<endl;
-    Graph* g4 = new RandomTree(10,1,5);
+    Graph *g7 = new Random_minCoverGraph(10,3,0.8);
     cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
-    cout<< "///////////////////////////////Arbre aléatoire//////////////////////////////////" <<endl;
+    cout<< "////////////////////////Graph ayant une petite couverture///////////////////////" <<endl;
     cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
-    cout<< g4->toString() << endl<<endl;
-    vector<int> cover51 = GetTreeOptimalVertexCover(g4);
-    cout << "> Arbre optimal :";displayVector(cover51);
+    cout << g7->toString() << endl;
+    cout<<"Algorithme de recherche de couverture:\n"<<endl;
+    vector<int> cover_para = opti_para_minCoverGraph(g7, 3);
+    cout << "Optimale paramétrique (3) : ";
+    displayVector(cover_para);
 
-    cout<<endl;
-    cout<<endl;
-    Graph* g3 = new RandomBinaryTree(10);
-    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
-    cout<< "//////////////////////////////Arbre aléatoire binaire///////////////////////////" <<endl;
-    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
-    cout<<  g3->toString() << endl<<endl;
-    vector<int> cover41 = GetTreeOptimalVertexCover(g3);
-    cout << "> Arbre optimal :";displayVector(cover41);
 
     
 
@@ -82,7 +102,7 @@ int main()
     cout<<endl;
     cout<<endl;
     cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
-    cout<< "///////////////////////////////File to Graph////////////////////////////////////" <<endl;
+    cout<< "///////////////////////////////File to Graph////////////////////////////////////" << endl;
     cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
     ReaderFile* reader = new ReaderFile();
     Graph *grapheFile = new Graph();
