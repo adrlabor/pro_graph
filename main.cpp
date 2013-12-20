@@ -28,47 +28,62 @@ int main()
     g1->addVertex();g1->addVertex();g1->addVertex();g1->addVertex();g1->addVertex();
     g1->addEdge(0,1);g1->addEdge(0,2);g1->addEdge(1,2);g1->addEdge(2,3);g1->addEdge(3,4);
 
-    cout <<endl;
     cout<<endl;
-    cout << "Graph normal :\n" << g->toString() << endl;
+    cout<<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "///////////////////////////////Graph classique//////////////////////////////////"<<endl; 
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
+    cout<<g->toString() << endl<<endl;
 
+    cout<<"Algorithme de recherche de couverture:\n"<<endl;
     vector<int> cover = glouton(g);
-    cout <<">Glouton : ";displayVector(cover);
+    cout<<"> Glouton : ";displayVector(cover);
 
     vector<int> cover2 = twoAppr_neighbourhood(g);
-    cout <<">2approché kill voisin :";displayVector(cover2);
+    cout<<"> 2-approché avec élimination du voisin : ";displayVector(cover2);
 
     vector<int> cover3 = twoAppr_depthSearch(g);
-    cout<<">2approché parcours profondeur :";displayVector(cover3);
+    cout<<"> 2-approché avec parcours en profondeur : ";displayVector(cover3);
 
-    cout <<endl;
-    cout <<endl;
+    cout<<endl;
+    cout<<endl;
     Graph* g2 = new Random_bipartis(10, 1);
-    cout << "Graph bipartis :\n" << g2->toString() << endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "///////////////////////////////Graph bipartis///////////////////////////////////" <<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
+    cout<< g2->toString() << endl<<endl;
 
 
-
+    
+    cout<<endl;
+    cout<<endl;
+    Graph* g4 = new RandomTree(10,1,5);
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "///////////////////////////////Arbre aléatoire//////////////////////////////////" <<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
+    cout<< g4->toString() << endl<<endl;
+    vector<int> cover51 = GetTreeOptimalVertexCover(g4);
+    cout << "> Arbre optimal :";displayVector(cover51);
 
     cout<<endl;
     cout<<endl;
     Graph* g3 = new RandomBinaryTree(10);
-    cout << "Arbre aléatoire binaire:\n" << g3->toString() << endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "//////////////////////////////Arbre aléatoire binaire///////////////////////////" <<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
+    cout<<  g3->toString() << endl<<endl;
     vector<int> cover41 = GetTreeOptimalVertexCover(g3);
-    cout << ">Arbre optimal :";displayVector(cover41);
+    cout << "> Arbre optimal :";displayVector(cover41);
 
-    cout<<endl;
-    cout<<endl;
-    Graph* g4 = new RandomTree(10,1,5);
-    cout << "Arbre aléatoire:\n" << g4->toString() << endl;
-    vector<int> cover51 = GetTreeOptimalVertexCover(g4);
-    cout << ">Arbre optimal :";displayVector(cover51);
-
-
+    
 
     cout<<endl;
     cout<<endl;
     cout<<endl;
     cout<<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "///////////////////////////////File to Graph////////////////////////////////////" <<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
     ReaderFile* reader = new ReaderFile();
     Graph *grapheFile = new Graph();
     grapheFile = reader->fileToGraph("source/fileTest.txt");
@@ -77,6 +92,13 @@ int main()
 
 
     
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout<< "//////////////////////////////SAT-solver MiniSat////////////////////////////////" <<endl;
+    cout<< "////////////////////////////////////////////////////////////////////////////////" << endl<<endl<<endl;
     Minisat minsat = Minisat();
     minsat.VertexCoverToSat(grapheFile);
     minsat.SatToVertexCover();
