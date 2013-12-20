@@ -28,7 +28,7 @@ OUTFILE= main
 
 #les fichiers objets a generer 
 #OBJS= $(LIBOBJS) 
-OBJS= Graph.o Random_graph.o Random_Tree.o Random_Binary_Tree.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o OptimalTree.o ReaderFile.o main.o
+OBJS= Graph.o Random_graph.o Random_Tree.o Random_minCoverGraph.o Random_Binary_Tree.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o opti_para_minCoverGraph.o OptimalTree.o ReaderFile.o main.o
 
 #les dependances 
 all: $(OUTFILE)
@@ -49,6 +49,9 @@ TwoAppr_neighbourhood.o: $(DIRSOURCE)TwoAppr_neighbourhood.cpp
 TwoAppr_depthSearch.o: $(DIRSOURCE)TwoAppr_depthSearch.cpp
 		gcc -o TwoAppr_depthSearch.o -c  $(DIRSOURCE)TwoAppr_depthSearch.cpp -W -Wall -ansi -pedantic
 
+Random_minCoverGraph.o : $(DIRSOURCE)Random_minCoverGraph.cpp
+		gcc -o Random_minCoverGraph.o -c  $(DIRSOURCE)Random_minCoverGraph.cpp -W -Wall -ansi -pedantic
+
 Random_bipartis.o: $(DIRSOURCE)Random_bipartis.cpp
 		gcc -o Random_bipartis.o -c  $(DIRSOURCE)Random_bipartis.cpp -W -Wall -ansi -pedantic
 
@@ -60,6 +63,9 @@ Random_Binary_Tree.o:$(DIRSOURCE)Random_Binary_Tree.cpp
 
 OptimalTree.o: $(DIRSOURCE)OptimalTree.cpp
 		gcc -o OptimalTree.o -c  $(DIRSOURCE)OptimalTree.cpp -W -Wall -ansi -pedantic
+		
+opti_para_minCoverGraph.o: $(DIRSOURCE)opti_para_minCoverGraph.cpp
+		gcc -o opti_para_minCoverGraph.o -c  $(DIRSOURCE)opti_para_minCoverGraph.cpp -W -Wall -ansi -pedantic
 
 ReaderFile.o: $(DIRSOURCE)ReaderFile.cpp 
 		gcc -o ReaderFile.o -c $(DIRSOURCE)ReaderFile.cpp  -W -Wall -ansi -pedantic
