@@ -9,6 +9,7 @@ Minisat::~Minisat() {
 }
 
 void Minisat::VertexCoverToSat(Graph *g) {
+        coverComputed=false;
         int numberVertex = g->getNbVertex();
         //Construction du vecteur avec toutes les arrêtes
         vector<int> neighboursOfVertex;
@@ -24,6 +25,35 @@ void Minisat::VertexCoverToSat(Graph *g) {
           computeFile(numberVertex,listVertice);
           startMinisat();
         }
+}
+
+vector<int> Minisat::SatToVertexCover() {
+
+    ifstream resultFile ("minisat-result", ios_base::in);
+   std::string resultMinisat;
+   resultFile>>resultMinisat;
+
+   vector<int> cover;
+   int i;
+   cout<<"Couverture"<<endl;
+   while(resultFile.good()) {
+                  resultFile >> i;
+                  //On ne récupére que les sommets dans la couverture
+                  if (i>0) {
+                          cover.push_back(i);
+                  }
+          }
+
+          resultFile.close();
+          //Affichage
+          for(int i=0;i<cover.size();i++){
+
+              cout<<cover[i]<<endl;
+          }
+
+   resultFile.close();
+   return cover;
+
 }
 
 void Minisat::computeFile(int numberVertex, vector<pair<int,int> > listVertice ){
@@ -47,4 +77,5 @@ void Minisat::computeFile(int numberVertex, vector<pair<int,int> > listVertice )
 
 void Minisat::startMinisat(){
     system("minisat/core/minisat fileVCtoSAT minisat-result" );
+    coverComputed=true;
 }

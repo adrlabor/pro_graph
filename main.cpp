@@ -67,7 +67,7 @@ int main()
 
     cout<<endl;
     cout<<endl;
-cout<<endl;
+    cout<<endl;
     cout<<endl;
     ReaderFile* reader = new ReaderFile();
     Graph *grapheFile = new Graph();
@@ -75,8 +75,13 @@ cout<<endl;
 	
     cout << "Graph normal :\n" << grapheFile->toString() << endl;
 
+
+    
     Minisat minsat = Minisat();
     minsat.VertexCoverToSat(grapheFile);
+    minsat.SatToVertexCover();
+
+
 	
     return 0;
 
