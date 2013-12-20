@@ -28,7 +28,7 @@ OUTFILE= main
 
 #les fichiers objets a generer 
 #OBJS= $(LIBOBJS) 
-OBJS= Graph.o Random_graph.o Random_Tree.o Random_minCoverGraph.o Random_Binary_Tree.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o opti_para_minCoverGraph.o OptimalTree.o ReaderFile.o main.o
+OBJS= Graph.o Random_graph.o Random_Tree.o Random_minCoverGraph.o Random_Binary_Tree.o Glouton.o TwoAppr_neighbourhood.o TwoAppr_depthSearch.o Random_bipartis.o opti_para_minCoverGraph.o OptimalTree.o ReaderFile.o Minisat.o main.o
 
 #les dependances 
 all: $(OUTFILE)
@@ -63,6 +63,10 @@ Random_Binary_Tree.o:$(DIRSOURCE)Random_Binary_Tree.cpp
 
 OptimalTree.o: $(DIRSOURCE)OptimalTree.cpp
 		gcc -o OptimalTree.o -c  $(DIRSOURCE)OptimalTree.cpp -W -Wall -ansi -pedantic
+
+Minisat.o: $(DIRSOURCE)Minisat.cpp
+		gcc -o Minisat.o -c  $(DIRSOURCE)Minisat.cpp -W -Wall -ansi -pedantic
+
 		
 opti_para_minCoverGraph.o: $(DIRSOURCE)opti_para_minCoverGraph.cpp
 		gcc -o opti_para_minCoverGraph.o -c  $(DIRSOURCE)opti_para_minCoverGraph.cpp -W -Wall -ansi -pedantic
