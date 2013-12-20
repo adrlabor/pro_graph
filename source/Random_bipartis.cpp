@@ -35,4 +35,17 @@ void Random_bipartis::generateRandomBipartis(int nbVertex, float probaEdge){
 			}
 		}
 	}
+    //défaut de cette implémentation : si la proba n'est pas de 1, il peut y avoir des sommets sans arrêtes.
+    //Une solution pourrait être de rajouter le code ci-dessous:
+    for(int i = 0; i < nbVertex; i++){
+        if(getNbEdge(i)==0){
+            if(i<sizeFirstSet){
+                //alors c'est un sommet du 1er set, on le relis à un du 2ème set
+                addEdge(i,((rand() % (nbVertex-sizeFirstSet)) + sizeFirstSet));
+            }
+            else{
+                addEdge(i,(rand() % sizeFirstSet));
+            }
+        }
+    }
 }
