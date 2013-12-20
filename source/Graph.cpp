@@ -16,6 +16,11 @@ Graph::~Graph()
     //dtor
 }
 
+
+vector< vector<int> > Graph::getVectorFromGraph() const{
+	return g_vertex;
+}
+
 //Gestion des sommets (vertex)
 int Graph::getNbVertex() const{
     return g_vertex.size();

@@ -15,6 +15,7 @@ class Graph
         Graph(vector<vector<int> > g_vertex);
         virtual ~Graph();
 
+	vector< vector<int> > getVectorFromGraph() const;
         int getNbVertex() const;
         int addVertex();
         void delVertex(int vertex);
