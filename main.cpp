@@ -7,6 +7,7 @@
 #include "include/Random_Binary_Tree.h"
 #include "include/Algorithmes.h"
 #include "include/ReaderFile.h"
+#include "include/Minisat.h"
 #include <vector>
 
 using namespace std;
@@ -69,6 +70,9 @@ cout<<endl;
 	grapheFile = reader->fileToGraph("source/fileTest.txt");
 	
 	cout << "Graph normal :\n" << grapheFile->toString() << endl;
+
+	   Minisat minsat = Minisat();
+            minsat.VertexCoverToSat(grapheFile);
 	
     return 0;
 
